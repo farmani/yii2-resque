@@ -19,7 +19,7 @@
     "psr-4": {
       "resque\\": ""
     }
-  }
+  },
 	"support": {
 		"email": "ramin.farmani@gmail.com",
 		"issues": "https://github.com/farmani/yii2-resque/issues",
