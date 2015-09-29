@@ -1,19 +1,34 @@
 {
-    "name": "farmani/yii2-resque",
-    "description": "Yii2 Resque",
-    "type": "yii2-extension",
-    "keywords": ["yii2","extension"],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Ramin Farmani",
-            "email": "ramin.farmani@gmail.com"
-        }
-    ],
-    
-    "autoload": {
-        "psr-4": {
-            "resque\\": ""
-        }
+  "name": "farmani/yii2-resque",
+  "description": "Yii2 Resque",
+  "type": "yii2-extension",
+  "keywords": ["yii2","extension"],
+  "license": "MIT",
+	"authors": [
+		{
+			"name": "Ramin Farmani",
+      "email": "ramin.farmani@gmail.com"
+		}
+	],
+	"require": {
+		"php": ">=5.3.0",
+		"ext-pcntl": "*",
+		"monolog/monolog": ">=1.2.0"
+	},
+	"autoload": {
+    "psr-4": {
+      "resque\\": ""
     }
+  }
+	"support": {
+		"email": "ramin.farmani@gmail.com",
+		"issues": "https://github.com/farmani/yii2-resque/issues",
+		"source": "https://github.com/farmani/yii2-resque"
+	},
+	"bin": [
+		"bin/resque"
+	],
+	"conflict": {
+		"resque/yii2-resque": "*"
+	}
 }
