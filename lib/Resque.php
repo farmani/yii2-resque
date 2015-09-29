@@ -2,9 +2,9 @@
 
 namespace resque\lib;
 
-use resque\lib\Resque\Resque_Job;
-use resque\lib\Resque\Resque_Redis;
-use resque\lib\Resque\Resque_Event;
+use resque\lib\Resque\Job;
+use resque\lib\Resque\Redis;
+use resque\lib\Resque\Event;
 
 
 /**
@@ -19,7 +19,7 @@ class Resque
     const VERSION = '1.2';
 
     /**
-     * @var Resque_Redis Instance of Resque_Redis that talks to redis.
+     * @var Redis Instance of Redis that talks to redis.
      */
     public static $redis = null;
 
@@ -56,9 +56,9 @@ class Resque
     }
 
     /**
-     * Return an instance of the Resque_Redis class instantiated for Resque.
+     * Return an instance of the Redis class instantiated for Resque.
      *
-     * @return Resque_Redis Instance of Resque_Redis.
+     * @return Redis Instance of Redis.
      */
     public static function redis()
     {
@@ -73,7 +73,7 @@ class Resque
         
         
         
-        self::$redis = new Resque_Redis($server, self::$redisDatabase, self::$redisPassword);
+        self::$redis = new Redis($server, self::$redisDatabase, self::$redisPassword);
         
         # Select Database
         self::$redis->select(self::$redisDatabase);
@@ -102,7 +102,7 @@ class Resque
 
         $pid = pcntl_fork();
         if($pid === -1) {
-            throw new RuntimeException('Unable to fork child worker.');
+            throw new \RuntimeException('Unable to fork child worker.');
         }
 
         return $pid;
@@ -166,11 +166,11 @@ class Resque
     {
         
         
-        $result = Resque_Job::create($queue, $class, $args, $trackStatus);
+        $result = Job::create($queue, $class, $args, $trackStatus);
         	
         if ($result) {
             
-            Resque_Event::trigger('afterEnqueue', array(
+            Event::trigger('afterEnqueue', array(
                 'class' => $class,
                 'args'  => $args,
                 'queue' => $queue,
@@ -184,11 +184,11 @@ class Resque
      * Reserve and return the next available job in the specified queue.
      *
      * @param string $queue Queue to fetch next available job from.
-     * @return Resque_Job Instance of Resque_Job to be processed, false if none or error.
+     * @return Job Instance of Job to be processed, false if none or error.
      */
     public static function reserve($queue)
     {
-        return Resque_Job::reserve($queue);
+        return Job::reserve($queue);
     }
 
     /**

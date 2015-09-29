@@ -8,7 +8,7 @@
  */
 namespace resque\lib\Resque;
 use resque\lib\Resque;
-class Resque_Stat
+class Stat
 {
 	/**
 	 * Get the value of the supplied statistic counter for the specified statistic.

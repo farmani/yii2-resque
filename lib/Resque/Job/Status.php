@@ -8,7 +8,7 @@
  */
 namespace resque\lib\Resque\Job;
 use resque\lib\Resque;
-class Resque_Job_Status
+class Status
 {
 	const STATUS_WAITING = 1;
 	const STATUS_RUNNING = 2;

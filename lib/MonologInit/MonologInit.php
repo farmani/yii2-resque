@@ -20,7 +20,7 @@
 
 // use Monolog\Handler;
 namespace resque\lib\MonologInit;
-class MonologInit_MonologInit
+class MonologInit
 {
     public $handler = null;
     public $target = null;

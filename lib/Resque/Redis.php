@@ -10,7 +10,7 @@ if (class_exists('Redis', false))
 
 		public $password = null;
 
-		public function __construct($host, $database = 0, $password = null, $timeout = 5)
+		public function __construct($host, $database = 0, $password = null, $timeout = 30)
 		{
 			parent::__construct();
 
@@ -30,7 +30,7 @@ if (class_exists('Redis', false))
 
 	        if (isset($this->password) && !empty($this->password)) {
 	            if ($this->auth($this->password) === false) {
-	                throw new CException('Resque failed to authenticate with redis!');
+	                throw new \Exception('Resque failed to authenticate with redis!');
 	            }
 	        }
 
@@ -225,4 +225,4 @@ else
 	}
 }
 
-class Resque_Redis extends RedisApi {}
+class Redis extends RedisApi {}
