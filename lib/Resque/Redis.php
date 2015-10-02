@@ -2,7 +2,7 @@
 namespace resque\lib\Resque;
 use resque\lib\Credis\Credis_Client;
 include_once(dirname(__FILE__) . '/../Credis/Client.php');
-if (class_exists('Redis', false))
+if (class_exists('\Redis', false))
 {
 	class RedisApi extends \Redis
 	{
