@@ -6,7 +6,7 @@ class RedisApi extends \Redis
 
     public $password = null;
 
-    public function __construct($host, $database = 0, $password = null, $timeout = 60)
+    public function __construct($host, $database = 0, $password = null, $timeout = 0)
     {
         parent::__construct();
 
@@ -22,7 +22,7 @@ class RedisApi extends \Redis
 
     function establishConnection()
     {
-        $this->connect($this->host, (int) $this->port, (int) $this->timeout);
+        $this->pconnect($this->host, (int) $this->port, (int) $this->timeout);
 
         if (isset($this->password) && !empty($this->password)) {
             if ($this->auth($this->password) === false) {
