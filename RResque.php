@@ -43,7 +43,7 @@ class RResque extends \yii\base\Component
     {
         parent::init();
         
-        if(!class_exists('ResqueAutoloader', false)) {
+        if(!class_exists('resque\lib\ResqueAutoloader', false)) {
             
             # Turn off our amazing library autoload
             spl_autoload_unregister(['Yii', 'autoload']);

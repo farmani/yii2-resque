@@ -43,12 +43,14 @@ class Job
     {
         $this->queue = $queue;
         $this->payload = $payload;
-        if (file_exists(\yii\BaseYii::$app->basePath . '/../console/components')) {
-            // yii 2 advanced
-            $this->payload['class'] = 'console\\components\\' . $this->payload['class'];
-        } else {
-            // yii2 basic
-            $this->payload['class'] = 'app\\components\\' . $this->payload['class'];
+        if(!class_exists($this->payload['class'])) {
+            if (file_exists(\yii\BaseYii::$app->basePath . '/../console/components')) {
+                // yii 2 advanced
+                $this->payload['class'] = 'console\\components\\' . $this->payload['class'];
+            } else {
+                // yii2 basic
+                $this->payload['class'] = 'app\\components\\' . $this->payload['class'];
+            }
         }
 
     }

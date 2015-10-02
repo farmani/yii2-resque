@@ -10,7 +10,7 @@ if (class_exists('Redis', false))
 
 		public $password = null;
 
-		public function __construct($host, $database = 0, $password = null, $timeout = 30)
+		public function __construct($host, $database = 0, $password = null, $timeout = 60)
 		{
 			parent::__construct();
 
